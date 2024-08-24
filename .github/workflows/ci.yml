@@ -24,5 +24,7 @@ jobs:
       - run: pip install pillow cairosvg
       - run: pip install beautifulsoup4>=4.11.1
       - run: pip install mkdocs-swagger-ui-tag
+      - run: pip3 install mkdocs-build-plantuml-plugin
       - run: pip3 install mkdocs-enumerate-headings-plugin
+      - run: pip install mkdocs-glightbox
       - run: mkdocs gh-deploy --force
