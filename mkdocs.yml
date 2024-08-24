@@ -1,0 +1,80 @@
+site_name: Проектирование информационной системы для сети роботизированных ресторанов "Робот и точка"
+
+repo_name: mariashapoval/Otus
+repo_url: https://github.com/mariashapoval/Otus
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - navigation.tabs
+    - navigation.indexes
+    - toc.integrate
+    - toc.follow
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+  language: ru
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Переключиться на тёмную тему
+      primary: blue
+      accent: violet
+      background: white  # Белый фон для светлой темы
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Переключиться на светлую тему
+      primary: violet
+      accent: darkgreen
+      background: darkgreen
+
+extra_css:
+  - stylesheets/extra.css  # Подключение дополнительного CSS-файла
+
+markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+
+plugins:
+  - search
+  - swagger-ui-tag
+  - mermaid2
+
+nav:
+  - Домашняя страница:
+    - index.md
+  - Документация:
+    - info.md
+    - goals.md
+    - glossary.md
+    - brs.md
+    - req.md
+    - models.md
+    - architecture.md
+    - api.md
+  - Задачи:
+    - uc.md
