@@ -21,6 +21,7 @@ jobs:
           path: .cache
       - run: pip install mkdocs-material
       - run: pip install mkdocs-mermaid2-plugin
+      - run: pip install mkdocs-glightbox
       - run: pip install pillow cairosvg
       - run: pip install beautifulsoup4>=4.11.1
       - run: pip install mkdocs-swagger-ui-tag
