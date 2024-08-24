@@ -59,10 +59,12 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
 
+
+
 plugins:
-  - search
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
   - swagger-ui-tag
-  - mermaid2
   - build_plantuml:
       render: 'server' # or "local" for local rendering
       bin_path: '/usr/local/bin/plantuml' # ignored when render: server
@@ -73,6 +75,13 @@ plugins:
       output_folder: 'out'
       input_folder: 'src'
       input_extensions: '' # comma separated list of extensions to parse, by default every file is parsed
+  - enumerate-headings:
+      exclude:
+        - index.md
+        - glossary.md
+  # - print-site:
+  #     path_to_pdf: "assets/test.pdf"
+  - glightbox
 
 nav:
   - Домашняя страница:
