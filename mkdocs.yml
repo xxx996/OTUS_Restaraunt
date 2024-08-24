@@ -1,7 +1,7 @@
-site_name: Проектирование информационной системы для сети роботизированных ресторанов "Робот и точка"
+site_name: Проектирование автоматизированной системы заказа и приготовления блюд в ресторане быстрого питания
 
-repo_name: mariashapoval/Otus
-repo_url: https://github.com/mariashapoval/Otus
+repo_name: xxx996/Otus
+repo_url: https://github.com/xxx996/Otus
 
 theme:
   name: material
