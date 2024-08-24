@@ -21,16 +21,16 @@
 
 ### Бизнес-процесс «Заказ блюда в ресторане»
 
- ![BPMN диаграмма](diagrams/include/BPMN-1.svg)
+![BPMN диаграмма](diagrams/include/BPMN-1.svg)
 
 ### Подпроцесс «Авторизация»
 
- ![BPMN диаграмма](diagrams/include/BPMN-2.svg)
+![BPMN диаграмма](diagrams/include/BPMN-2.svg)
 
 ### Подпроцесс «Показать меню»
 
- ![BPMN диаграмма](diagrams/include/BPMN-3.svg)
+![BPMN диаграмма](diagrams/include/BPMN-3.svg)
 
 ### Подпроцесс «Рассчитать скидки»
 
- ![BPMN диаграмма](diagrams/include/BPMN-4.svg)
+![BPMN диаграмма](diagrams/include/BPMN-4.svg)
