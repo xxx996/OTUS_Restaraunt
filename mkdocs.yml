@@ -98,7 +98,6 @@ plugins:
         - glossary.md
   # - print-site:
   #     path_to_pdf: "assets/test.pdf"
-  - glightbox
 
 
 nav:
