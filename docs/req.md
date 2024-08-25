@@ -63,4 +63,4 @@
 
 ## Общая диаграмма Use Case
  
- ![](diagrams/include/uc.svg)
+ ![](diagrams/include/UC.svg)
