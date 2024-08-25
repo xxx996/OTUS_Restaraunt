@@ -64,3 +64,9 @@
 ## Общая диаграмма Use Case
  
  ![](diagrams/include/UC.svg)
+
+
+## Описание Use Case
+
+### Оформить заказ
+ 
