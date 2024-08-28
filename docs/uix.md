@@ -1,58 +1,55 @@
 # Пользовательский интерфейс приложения
 
-## Вайрфреймы
 
-Пользовательский интерфейс представлен в виде вайрфоеймов страниц веб-приложения.
+## **`WF1`** Место получения заказа
 
-### **`WF1`** Место получения заказа
+![](images/question-2.png)
 
-![](docs/images/question-2.png)
+## **`WF2`** Форма вопроса для участия в программе лояльности
 
-### **`WF2`** Форма вопроса для участия в программе лояльности
+![](images/question.png)
 
-![](docs/images/question.png)
+## **`WF3`** Форма аутентификации
 
-### **`WF3`** Форма аутентификации
+![](images/authentication.png)
 
-![](docs/images/authentication.png)
+## **`WF4`** Форма восстановления пароля
 
-### **`WF4`** Форма восстановления пароля
+![](images/recovery.png)
 
-![](docs/images/recovery.png)
+## **`WF5`** Форма регистрации
 
-### **`WF5`** Форма регистрации
+![](images/registration.png)
 
-![](docs/images/registration.png)
+## **`WF6`** Форма меню
 
-### **`WF6`** Форма меню
+![](images/menu.png)
 
-![](docs/images/menu.png)
+## **`WF7`** Форма сформированной корзины
 
-### **`WF7`** Форма сформированной корзины
+![](images/cart.png)
 
-![](docs/images/cart.png)
+## **`WF8`** Форма оплаты
 
-### **`WF8`** Форма оплаты
+![](images/pay.png)
 
-![](docs/images/pay.png)
+## **`WF9`** Форма оплаты картой
 
-### **`WF9`** Форма оплаты картой
+![](images/card.png)
 
-![](docs/images/card.png
+## **`WF10`** Форма оплаты наличными
 
-### **`WF10`** Форма оплаты наличными
+![](images/cash.png)
 
-![](docs/images/cash.png)
+## **`WF11`** Форма оплаты бонусами
 
-### **`WF11`** Форма оплаты бонусами
-
-![](docs/images/bonus.png)
+![](images/bonus.png)
 
 
-### **`WF12`** Ошибка оплаты
+## **`WF12`** Ошибка оплаты
 
-![](docs/images/error.png)
+![](images/error.png)
 
-### **`WF13`** Форма отзывы
+## **`WF13`** Форма отзывы
 
-![](docs/images/feedback.png)
+![](images/feedback.png)

@@ -93,6 +93,7 @@ nav:
     - req.md
     - models.md
     - architecture.md
+    - uix.md
     - api.md
   - Задачи:
     - uc.md
