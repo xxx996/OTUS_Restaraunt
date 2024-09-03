@@ -32,7 +32,7 @@
 
 ![BPMN диаграмма](diagrams/include/BPMN-1.svg)
 
-### Подпроцесс «Авторизация»
+### Подпроцесс «Аутентификация»
 
 ![BPMN диаграмма](diagrams/include/BPMN-2.svg)
 
@@ -43,3 +43,7 @@
 ### Подпроцесс «Рассчитать скидки»
 
 ![BPMN диаграмма](diagrams/include/BPMN-4.svg)
+
+### Подпроцесс «Оплата заказа»
+
+![BPMN диаграмма](diagrams/include/BPMN-5.svg)
