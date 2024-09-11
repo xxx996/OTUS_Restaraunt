@@ -103,7 +103,7 @@
 | Диаграмма                  | ![](diagrams/include/UC2.svg)                  |
 | Макеты                     | [protUC1](assets/images/protUC1.PNG) |
 
-![Исключения](../test/123.txt#L1)
+![Исключения](docs/req.md)
 
 #### **`UC3`** Регистрация в программе лояльности
 
