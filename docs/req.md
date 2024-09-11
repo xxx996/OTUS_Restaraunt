@@ -103,7 +103,7 @@
 | Диаграмма                  | ![](diagrams/include/UC2.svg)                  |
 | Макеты                     | [protUC1](assets/images/protUC1.PNG) |
 
-[Исключения](https://github.com/xxx996/OTUS_Restaraunt/blob/main/docs/req.md#исключения)
+[Исключения]((https://github.com/xxx996/OTUS_Restaraunt/blob/a7589656a9b1b24a169577a3c6b186a64460b7c2/docs/req.md?plain=1#L277) 
 
 #### **`UC3`** Регистрация в программе лояльности
 
