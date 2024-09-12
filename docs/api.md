@@ -23,6 +23,8 @@
 |GET| **/users/{UserID}**               |  Получение информации о профиле клиента. |
 |POST| **/recovery**                    |  Восстановление пароля. |
 
+## Swagger
+
 <swagger-ui src="https://raw.githubusercontent.com/xxx996/OTUS_Restaraunt/main/docs/assets/swagger.yaml" />
 
 
