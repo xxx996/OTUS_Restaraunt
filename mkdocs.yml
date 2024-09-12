@@ -114,4 +114,16 @@ nav:
     - uix.md
     - api.md
   - Задачи:
-    - uc.md
+    - tasks/auth_client.md
+    - tasks/recovery.md
+    - tasks/registr.md
+    - tasks/out_registr.md
+    - tasks/order.md
+    - tasks/menu.md
+    - tasks/cart.md
+    - tasks/order_pay.md
+    - tasks/order_pay_card.md
+    - tasks/order_pay_cash.md
+    - tasks/order_pay_bonus.md
+    - tasks/get_order.md
+    - tasks/review.md
