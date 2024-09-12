@@ -114,4 +114,4 @@ nav:
     - uix.md
     - api.md
   - Задачи:
-    - uc.md
+    - tasks/auth_client.md
