@@ -40,9 +40,6 @@
 
 ![BPMN диаграмма](diagrams/include/BPMN-3.svg)
 
-### Подпроцесс «Рассчитать скидки»
-
-![BPMN диаграмма](diagrams/include/BPMN-4.svg)
 
 ### Подпроцесс «Оплата заказа»
 
