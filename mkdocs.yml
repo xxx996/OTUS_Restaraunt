@@ -125,4 +125,5 @@ nav:
     - tasks/order_pay_card.md
     - tasks/order_pay_cash.md
     - tasks/order_pay_bonus.md
+    - tasks/get_order.md
     - tasks/review.md
