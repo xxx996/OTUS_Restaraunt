@@ -1,0 +1,808 @@
+openapi: 3.0.2
+info:
+  version: 3.0.0
+  title: 'Robot and dot'
+  description: 'API для заказа блюд через приложение'
+  contact: 
+    name: Контактная информация
+    url: robot.com
+    email: robotanddot@gmail.com
+servers:
+  # Added by API Auto Mocking Plugin
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/sanyartemov/test/3.0.0
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/cottoffeus/Dot_Eats/1
+paths:
+ /users/login:
+  post:
+    tags: [Пользователи]
+    security:
+      - bearerAuth: []
+    summary: Аутентификация пользователя
+    description: Позволяет аутентифицироваться клиенту
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Login'
+    responses:  
+      '200':
+        description: Успешная аутентификация
+        content:
+         application/json:
+          schema:
+           type: object
+           properties:
+            result:
+              type: string
+              example: Аутентификация прошла успешно
+              
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+ /users/register:
+  post:
+    tags: [Пользователи]
+    security:
+      - bearerAuth: []
+    summary: Регистрация пользователя
+    description: Позволяет зарегистрироваться пользователю
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Register'
+    responses:  
+      '200':
+        description: Успешная регистрация
+        content:
+         application/json:
+          schema:
+           type: object
+           properties:
+            result:
+              type: string
+              example: Прошла успешная регистрация
+              
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+ /users/{UserID}:
+  get:
+    tags: [Пользователи]
+    security:
+      - bearerAuth: []
+    summary: Получение информации о профиле пользователя
+    description: Позволяет клиенту просмотреть профиль
+    operationId: getUserD
+    parameters: 
+       - name: UserID
+         in: path
+         required: true
+         schema:
+          type: string
+          format: guid
+          example: 123
+    responses:  
+      '200':
+        description: Получено конкретное блюдо
+        content:
+         application/json:
+          schema:
+           $ref: '#/components/schemas/User'
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Пользователь не найден
+      'default':
+          description: Внутренняя ошибка сервера
+ /recovery:
+  post:
+    tags: [Пользователи]
+    security:
+      - bearerAuth: []
+    summary: Восстановление пароля
+    description: Позволяет клиенту восстановить пароль
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Recovery'
+    responses:  
+      '200':
+        description: Успешное восстановление пароля
+        content:
+         application/json:
+          schema:
+           type: object
+           properties:
+            result:
+              type: string
+              example: Пароль успешно восстановлен
+              
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+ /сart:
+  get:
+    tags: [Заказы]
+    security:
+      - bearerAuth: []
+    summary: Получение сформированной корзины
+    description: Позволяет увидеть сформированную корзину
+    responses:  
+      '200':
+        description: Получена корзина
+        content:
+         application/json:
+          schema:
+              $ref: '#/components/schemas/OrderDishes'
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+ /menu:
+  get:
+    tags: [Меню]
+    security:
+      - bearerAuth: []
+    summary: Получение текущего меню
+    description: Позволяет клиенту увидеть меню
+    responses:  
+      '200':
+        description: Получено меню
+        content:
+         application/json:
+          schema:
+           $ref: '#/components/schemas/Menu'
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+ /menu/category:
+  get:
+    tags: [Меню]
+    security:
+      - bearerAuth: []
+    summary: Получение категорий
+    description: Позволяет клиенту блюда в категории
+    responses:  
+      '200':
+        description: Получен список блюд в категории
+        content:
+         application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Category'
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+  post:
+    tags: [Меню]
+    security:
+      - bearerAuth: []
+    summary: Добавление новой категории
+    description: Позволяет добавить новую категорию блюд
+    requestBody:
+      required: true
+      description: Добавлена новая категория блюд
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Menu'
+    responses:  
+      '200':
+        description: Категория добавлена
+      '400':
+          description: Неверные данные
+      'default':
+          description: Внутренняя ошибка сервера
+ /menu/category/dish/{dishID}:
+  get:
+    tags: [Меню]
+    security:
+      - bearerAuth: []
+    summary: Получение конкретного блюда из выбранной категории
+    description: Позволяет клиенту получить конкретное блюдо
+    operationId: getDishID
+    parameters: 
+       - name: dishID
+         in: path
+         required: true
+         schema:
+          type: string
+          format: guid
+          example: 123
+    responses:  
+      '200':
+        description: Получено конкретное блюдо
+        content:
+         application/json:
+          schema:
+           $ref: '#/components/schemas/DishItems'
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+ /menu/category/dish:
+  post:
+    tags: [Меню]
+    security:
+      - bearerAuth: []
+    summary: Добавление нового блюда
+    description: Позволяет добавить новое блюдо 
+    requestBody:
+      required: true
+      description: Добавлено новое блюдо
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Category'
+    responses:  
+      '200':
+        description: Категория добавлена
+      '400':
+          description: Неверные данные
+      'default':
+          description: Внутренняя ошибка сервера
+ /order/{orderID}/status:
+  get:
+    tags: [Статус заказа]
+    security:
+      - bearerAuth: []
+    summary: Получение статуса по заказу
+    description: Позволяет пользователю увидеть статус заказа
+    operationId: getOrderID
+    parameters: 
+      - name: orderID
+        in: path
+        description: Номер заказа
+        required: true
+        schema:
+          type: string
+          format: guid
+          example: 123
+    responses:  
+      '200':
+        description: Получен статус заказа
+        content:
+         application/json:
+          schema:
+           $ref: '#/components/schemas/Status'
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+ /users/{userID}/orders:
+  get:
+    tags: [Заказы]
+    security:
+      - bearerAuth: []
+    summary: Получение истории заказов
+    description: Позволяет увидеть историю заказов
+    operationId: getuserID
+    parameters: 
+       - name: userID
+         in: path
+         description: Идентификатор пользователя
+         required: true
+         schema:
+          type: string
+          format: guid
+          example: 123
+    responses:  
+      '200':
+        description: Получена история заказов клиента
+        content:
+         application/json:
+          schema:
+           $ref: '#/components/schemas/Orders'
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+ /orders/{orderID}:
+  get:
+    tags: [Заказы]
+    security:
+      - bearerAuth: []
+    summary: Получение информации по заказу
+    description: Позволяет пользователю увидеть информацию по заказу
+    operationId: getorderID
+    parameters: 
+       - name: orderID
+         in: path
+         description: Номер заказа
+         required: true
+         schema:
+          type: string
+          format: guid
+          example: 123
+    responses:  
+      '200':
+        description: Получена информация по заказу
+        content:
+         application/json:
+          schema:
+           $ref: '#/components/schemas/Order'
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+  put:
+    tags: [Заказы]
+    security:
+      - bearerAuth: []
+    summary: Обновление информации по заказу
+    description: Позволяет обновить информацию по заказу
+    operationId: putorderID
+    parameters: 
+       - name: orderID
+         in: path
+         description: Номер заказа
+         required: true
+         schema:
+          type: string
+          format: guid
+          example: 123
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderRequest'  
+    responses:  
+      '200':
+        description: Информация обновлена
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+  delete:
+    tags: [Заказы]
+    security:
+      - bearerAuth: []
+    summary: Удаление заказа
+    description: Позволяет удалить заказ
+    operationId: deleteorderID
+    parameters: 
+       - name: orderID
+         in: path
+         description: Номер заказа
+         required: true
+         schema:
+          type: string
+          format: guid
+          example: 123
+    responses:  
+      '200':
+        description: Заказ успешно удален
+      '403':
+          description: Отказ в доступе, недостаточно прав для выполнении операции
+      '404':
+          description: Заказ не найден
+      'default':
+          description: Внутренняя ошибка сервера
+ /reviews:
+  get:
+    tags: [Отзывы]
+    security:
+      - bearerAuth: []
+    summary: Получение списка отзывов
+    description: Получить все отзывы пользователя
+    responses:
+      '200':
+        description: Список отзывов
+        content:
+         application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Reviews'
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+ /orders/{orderID}/reviews:
+  post:
+    tags: [Отзывы]
+    security:
+      - bearerAuth: []
+    summary: Добавление отзыва о заказе
+    description: Позволяет пользователю добавить отзыв о блюде
+    operationId: orderID
+    parameters: 
+      - name: orderID
+        in: path
+        description: Уникальный идентификатор заказа
+        required: true
+        schema:
+          type: string
+          format: guid
+          example: 123
+    requestBody:
+      required: true
+      description: Добавлен отзыв о блюде
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Reviews'
+    responses:  
+      '200':
+        description: Блюдо оценено
+        content:
+         application/json:
+          schema:
+           type: object
+           properties:
+            result:
+              type: string
+              example: Оценка добавлена
+              
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+ /reviews/{reviewsID}:
+  get:
+    tags: [Отзывы]
+    security:
+      - bearerAuth: []
+    summary: Получение конкретного отзывы
+    description: Позволяет получить отзыв
+    operationId: getreviewsID
+    parameters: 
+       - name: reviewsID
+         in: path
+         description: Номер отзывы
+         required: true
+         schema:
+          type: string
+          format: guid
+         example: reviewsId_123
+    responses:  
+      '200':
+        description: Информация об отзыве по заказу
+        content:
+         application/json:
+          schema:
+            $ref: '#/components/schemas/Reviews'
+      '400':
+          description: Ошибка клиента
+      '404':
+          description: Информация недоступна
+      'default':
+          description: Внутренняя ошибка сервера
+tags:
+  - name: Статус заказа
+    description: Получение статуса заказа
+  - name: Заказы
+    description: Получение информации о заказах
+  - name: Отзывы
+    description: Добавление отзывов
+  - name: Меню
+    description: Операции связанные с меню
+  - name: Пользователи
+    description: Операции связанные с пользователями
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Menu:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Идентификатор 
+          example: 123
+        category:
+          type: string
+          description: Категория в меню
+          example: Бургеры
+    MenuItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Идентификатор 
+          example: 123
+        name:
+          type: string
+          description: Категория в меню
+          example: Бургеры
+        description:
+          type: string
+          description: Описание 
+          example: текст
+        price:
+            type: number
+            format: float
+            description: Цена 
+            example: 100
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Идентификатор 
+          example: 123
+        dish:
+          type: string
+          description: Блюдо
+          example: Чизбургер
+        price:
+          type: number
+          format: float
+          description: Стоимость блюда
+          example: 69
+        category:
+          type: string
+          description: Категория блюда
+          example: Бургеры
+    DishItems:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Идентификатор 
+          example: 123
+        dish:
+          type: string
+          description: Блюдо
+          example: Чизбургер
+        price:
+          type: number
+          format: float
+          description: Стоимость блюда
+          example: 69
+        description:
+          type: string
+          description: Описание блюда
+          example: Сочный бургер из мраморной говядины
+        category:
+          type: string
+          description: Категория блюда
+          example: Бургеры
+    Login:
+      type: object
+      properties:
+        login:
+          type: string
+          description: Логин пользователя
+          example: ivanov
+        password:
+          type: string
+          description: Пароль пользователя
+          example: 123456
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Имя пользователя
+          example: ivanov
+        email:
+          type: string
+          description: Почта пользователя
+          example: ivanov@yandex.ru
+        datebirthday:
+          type: string
+          format: date
+          description: Дата рождения
+          example: 01.01.1900
+        phonenumber:
+          type: string
+          description: Номер телефона
+          example: 79998887766
+    Register:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Логин пользователя
+          example: ivanov
+        password:
+          type: string
+          description: Пароль пользователя
+          example: 123456 
+        datebirthday:
+          type: string
+          format: date
+          description: Дата рождения
+          example: 01.01.1900
+        phonenumber:
+          type: string
+          description: Номер телефона
+          example: 79998887766
+    Recovery:
+      type: object
+      properties:
+        phonenumber:
+          type: string
+          description: Номер телефона
+          example: 79998887766
+        code:
+          type: string
+          description: Код
+          example: 1234
+    Status:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - Обработка
+            - Оформлен
+            - Готовится
+            - Готов к выдаче
+            - Отменен
+    Order:
+      type: array
+      items:
+        type: object
+        properties:
+          orderID: 
+            type: string
+            description: Уникальный идентификатор заказа    
+          status: 
+            enum: 
+              - Отменен
+              - Выдан
+          totalprice:
+            type: number  
+            description: Итоговая стоимость заказа
+            example: 100
+          orderDate:
+            type: string
+            format: date-time
+            description: Дата и время заказа
+          paymentMethod:
+            enum: 
+            - Наличные
+            - Картой
+          dishes:
+            $ref: '#/components/schemas/OrderDishes' 
+    Orders:
+      type: array
+      items:
+        type: object
+        properties:
+          userID: 
+            type: string
+            description: Уникальный идентификатор пользователя    
+          orders:
+            $ref: '#/components/schemas/ListOrders'
+    OrderDishes:
+      type: array 
+      items:
+        type: object
+        properties:
+          ItemID: 
+            type: string
+            description: Уникальный идентификатор блюда
+            example: 123
+          name:
+            type: string
+            description: Наименование блюда
+            example: Бургер
+          quantity:
+            type: integer
+            description: Количество
+            example: 2
+          price:
+            type: number
+            format: float
+            description: Цена заказа
+            example: 100
+    ListOrders:
+      type: array 
+      items:
+        type: object
+        properties:
+          orderID: 
+            type: string
+            description: Уникальный идентификатор блюда
+            example: 123
+          status: 
+            enum: 
+              - Отменен
+              - Выдан
+          totalprice:
+            type: number  
+            description: Итоговая стоимость заказа
+            example: 100
+          orderDate:
+            type: string
+            format: date-time
+            description: Дата и время заказа
+    OrderRequest:
+      type: object
+      properties:
+          items: 
+            type: array
+            items:
+              type: object
+              properties:
+                itemId:
+                  type: string
+                  description: Уникальный идентификатор блюда
+                  example: 123
+                status: 
+                  enum: 
+                    - Отменен
+                    - Выдан
+                quantity:
+                  type: integer
+                  description: Количество
+                  example: 2
+                deliveryMode:
+                  enum: 
+                    - Самовывоз
+                    - На месте
+    Reviews:
+      type: object
+      required:
+        - user_id
+        - order_id
+        - rating
+        - review
+      properties:
+        user_id:
+          type: integer
+        order_id:
+          type: integer
+        rating:
+          type: number
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+          description: Рейтинг блюда от пользователя
+          example: 5
+        review:
+          type: string
+          description: Отзыв о блюде
+          example: Все понравилось
+security:
+        - bearerAuth: []
